@@ -1,0 +1,43 @@
+var five = require("johnny-five"),
+  board, motor, led;
+
+board = new five.Board();
+
+board.on("ready", function() {
+  // Create a new `motor` hardware instance.
+  motor = new five.Motor({
+    pin: 5
+  });
+
+
+  board.repl.inject({
+    motor: motor
+  });
+
+  // Motor Event API
+
+  // "start" events fire when the motor is started.
+  motor.on("start", function() {
+    console.log("start");
+
+    // 
+    board.wait(5000, function() {
+      motor.stop();
+    });
+  });
+
+  // eventos que pueden suceder al parar el motor.
+  motor.on("stop", function() {
+    console.log("El motor se a detenido");
+
+   
+});
+   
+     
+
+
+//metodo para inciar el motor
+  motor.start();
+
+
+});

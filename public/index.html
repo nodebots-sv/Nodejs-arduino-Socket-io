@@ -1,0 +1,52 @@
+<!DOCTYPE html>  
+<html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->  
+<head>  
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>NodeBots Sv</title>
+</head>  
+<body>  
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
+<link rel="stylesheet" href="lib/css/style.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+  <script src="lib/socket.io-client/socket.io.js"></script>
+  <script src="lib/angularjs/angular.js"></script>  
+  <script src="lib/angular-socket-io/socket.js"></script>
+  <script src="https://rawgit.com/bahmutov/console-log-div/master/console-log-div.js"></script>
+ <div class="container center">
+    <h1>{{"Control Panel"}}</h1>
+  <div ng-controller="ArduController" class="col s6">
+  <button class="waves-effect waves-light btn" ng-click="ledOn()">encender</button>
+    <button class="waves-effect waves-light btn" ng-click="ledOff()">Apagar</button>
+  </div>
+</div>
+<div id="console"></div>
+ 
+<script type="text/javascript">  
+    var app = angular.module('myApp', ['btford.socket-io']).
+    factory('mySocket', function (socketFactory) {
+        return socketFactory();
+    }).
+    controller('ArduController', function ($scope,mySocket) {
+ 
+        $scope.ledOn = function () {
+ 
+            mySocket.emit('led:on');
+            console.log(' Encendido');
+        };
+ 
+ 
+        $scope.ledOff = function () {
+ 
+            mySocket.emit('led:off');
+            console.log('Apagado');  
+        };    
+});
+
+
+
+ 
+</script>  
+</body>
