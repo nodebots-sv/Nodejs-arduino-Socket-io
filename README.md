@@ -2,6 +2,11 @@
 
 # Nodejs+arduino+Socket-io
 ###Ejemplos basico de como usar nodejs+arduino+socket-io
+Primero ejecuta:
+~~~
+npm install
+~~~
+
 #####Para ejecutar los scripts haz lo siguiente por cada uno:
 __Node + nombre de script__
 ~~~
